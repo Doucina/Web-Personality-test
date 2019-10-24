@@ -11,7 +11,9 @@
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
         target="_blank"
       >
-        <span class="mr-2">Latest Release</span>
+      <v-btn outlined class="mr-2" color="primary">Sign in</v-btn>
+        <v-btn outlined class="mr-2" color="primary">Sign up</v-btn>
+      
       </v-btn>
     </v-app-bar>
 

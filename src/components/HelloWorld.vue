@@ -34,9 +34,17 @@
 
             <v-card-text>Quelle est la saison qui correspond le mieux à votre personnalité profonde ?</v-card-text>
             <v-card-actions v-if="actions">
-              <v-btn icon>
-                <v-icon class="mx-2" fab dark normal color="green">mdi-flower</v-icon>
-              </v-btn>
+              
+              <v-card-title>
+          <v-rating
+            :value="4"
+            dense
+            color="orange"
+            background-color="orange"
+            hover
+            class="mr-2"
+          ></v-rating>
+              </v-card-title>
 
               <v-btn outlined color="primary" @click="redirect">Faire le test</v-btn>
             </v-card-actions>
@@ -47,11 +55,11 @@
           <div id="surveyElement"></div>
           <div id="surveyResult"></div>
         </div>
-        <p class="text-center" style="color:#030200;">
+        <p class="text-center" style="color:#caccd9;">
           <br />For always more fun →
           <a
             href="https://www.openask.com/fr/tests/"
-            style="color:#10257e;"
+            style="color:#caccd9;"
             target="_blank"
           >Click here 😊</a>
         </p>
