@@ -1,13 +1,15 @@
+import Vue from "vue";
 import Router from "vue-router";
-import Quizz from "./components/Quizz";
 import HelloWorld from "./components/HelloWorld";
+
+Vue.use(Router);
 
 // 3. Create the router
 export default new Router({
   mode: "history",
-  base: __dirname,
+  base: process.env.BASE_URL,
   routes: [
-    { path: "/", component: HelloWorld },
-    { path: "/quizz", component: Quizz }
+    { path: "/", name: "QUIZZLAND", component: HelloWorld }
+    //{ path: "/quizz", component: Quizz },
   ]
 });

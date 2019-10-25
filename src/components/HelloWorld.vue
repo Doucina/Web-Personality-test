@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout text-center wrap row justify-center align-center>
-      <v-img height="100%" width="150%" :src="require('../assets/ko.png')">
+      <v-img height="100%" width="150%" :src="require('../assets/no.jpg')">
         <v-layout row justify-center align-center>
           <v-container grid-list-xl pt-5 style="max-height: 10em;">
             <v-layout row justify-center align-center>
@@ -9,8 +9,8 @@
                 <v-card-title class="section__title justify-center">
                   
                     <v-flex mb-4>
-                      <h1 class="display-2 font-weight-bold mb-3">Welcome to Quizzland</h1>
-                      <p class="subheading font-weight-regular">
+                      <h1 style="color:#caccd9;" class="display-2 font-weight-bold mb-3">Welcome to Quizzland</h1>
+                      <p style="color:#caccd9;" class="subheading font-weight-light">
                         Want to have fun with a multitude of tests concocted by our team ?
                         <br />Let's join us !
                       </p>
@@ -55,11 +55,11 @@
           <div id="surveyElement"></div>
           <div id="surveyResult"></div>
         </div>
-        <p class="text-center" style="color:#caccd9;">
+        <p class="text-center" style="color:#4A148,">
           <br />For always more fun →
           <a
             href="https://www.openask.com/fr/tests/"
-            style="color:#caccd9;"
+            style="color:#4A148;"
             target="_blank"
           >Click here 😊</a>
         </p>
