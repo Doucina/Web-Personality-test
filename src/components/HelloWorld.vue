@@ -1,7 +1,8 @@
 <template>
   <v-container>
     <v-layout text-center wrap row justify-center align-center>
-      <v-img height="100%" width="150%" :src="require('../assets/no.jpg')">
+      <v-img height="100%" width="150%" 
+      src="https://s1.1zoom.me/b5050/193/Winter_Lake_Forests_Snow_466263_1366x768.jpg">
         <v-layout row justify-center align-center>
           <v-container grid-list-xl pt-5 style="max-height: 10em;">
             <v-layout row justify-center align-center>
