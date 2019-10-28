@@ -1,141 +1,88 @@
 <template>
-    <v-container>
-      <v-form @submit.prevent="onSignup">
-      <v-row>
-        <table>
-          <tr>
-           <v-text-field
-             v-model="firstname"
-             :rules="nameRules"
-             :counter="20"
-             label="First name"
-             required
-           ></v-text-field>
-          </tr>
+  <v-container>
+    <v-layout text-center wrap row justify-center align-center>
+      <v-img height="100%" width="150%" src="https://s1.1zoom.me/b5050/193/Winter_Lake_Forests_Snow_466263_1366x768.jpg">
+        <v-layout row justify-center align-center>
+          <v-container grid-list-xl pt-5 style="max-height: 10em;">
+            <v-layout row justify-center align-center>
+              <v-card color="rgb(255, 0, 0, 0.16)" class="text-center lighten-5">
+                <v-card-title class="section__title justify-center">
 
-          <tr>
-           <v-text-field
-             v-model="lastname"
-             :rules="nameRules"
-             :counter="20"
-             label="Last name"
-             required
-           ></v-text-field>
-           </tr>
+                    <v-flex mb-4>
+                      <h1 style="color:#caccd9;" class="display-2 font-weight-bold mb-3">Welcome to Quizzland</h1>
+                      <p style="color:#caccd9;" class="subheading font-weight-light">
+                        Want to have fun with a multitude of tests concocted by our team ?
+                        <br />Let's join us !
+                      </p>
+                    </v-flex>
+                </v-card-title>
+              </v-card>
+            </v-layout>
+          </v-container>
+        </v-layout>
 
-           <tr>
-            <v-text-field
-             v-model="email"
-             :rules="emailRules"
-             :counter="20"
-             label="E-mail"
-             required
-             ></v-text-field>
-           </tr>
-           <tr>
-            <v-text-field
-             name="password"
-             :counter="20"
-             :rules="nameRules"
-             label="Password"
-             id="password"
-             v-model="password"
-             type="password"
-             required></v-text-field>
-          </tr>
-          <tr>
-           <v-text-field
-              name="confirmPassword"
-              label="Confirm Password"
-              id="confirmPassword"
-              v-model="confirmPassword"
-              type="password"
-              :counter="20"
-              :rules="[comparePasswords]"></v-text-field>
-           </tr>
-          </table>
-      </v-row>
-      <v-btn @click="addElement">Ajouter</v-btn>
-      <v-btn @click="login" type="submit">Submit</v-btn>
-      <v-btn type="submit">Sign up</v-btn>
-      <v-tooltip bottom>
-      <template v-slot:activator="{ on }">
-        <v-btn primary light color="red white--text" dark v-on="on" replace :to="{name: 'login'}">Back</v-btn>
-      </template>
-      <span>Revenir sur la page d'acceuil</span>
-    </v-tooltip>
-    </v-form>
+        <div>
+          <v-card :elevation="card" class="mx-auto" :width="width">
+            <v-img
+              v-if="media"
+              class="black--text"
+              height="200px"
+              width="400"
+              src="https://raw.githubusercontent.com/Doucina/Web-Personality-test/rondoudou/src/assets/tra.png"
+            >
+            </v-img>
+
+            <v-card-text>Quelle est la saison qui correspond le mieux à votre personnalité profonde ?</v-card-text>
+            <v-card-actions v-if="actions">
+
+              <v-card-title>
+          <v-rating
+            :value="4"
+            dense
+            color="orange"
+            background-color="orange"
+            hover
+            class="mr-2"
+          ></v-rating>
+              </v-card-title>
+              <v-btn outlined color="primary" @click="redirect">Faire le test</v-btn>
+            </v-card-actions>
+          </v-card>
+        </div>
+
+        <div>
+          <div id="surveyElement"></div>
+          <div id="surveyResult"></div>
+        </div>
+        <p class="text-center" style="color:#4A148,">
+          <br />For always more fun →
+          <a
+            href="https://www.openask.com/fr/tests/"
+            style="color:#4A148;"
+            target="_blank"
+          >Click here 😊</a>
+        </p>
+
+      </v-img>
+    </v-layout>
   </v-container>
 </template>
 
 <script>
-import axios from 'axios'
+// import Quizz from "./Quizz";
 export default {
   data: () => ({
-    valid: false,
-    firstname: '',
-    lastname: '',
-    confirmPassword: '',
-    nameRules: [
-      v => !!v || 'Name is required',
-      v => v.length <= 10 || 'Name must be less than 10 characters'
-    ],
-    email: '',
-    emailRules: [
-      v => !!v || 'E-mail is required',
-      v => /.+@.+/.test(v) || 'E-mail must be valid'
-    ],
-    todos: [],
-    url: 'http://localhost:4000' // 'http://localhost:4000'
+    media: true,
+    actions: true,
+    width: 344,
+    height: undefined
+    //    showQuizz: false
   }),
-  computed: {
-    comparePasswords () {
-      return this.password !== this.confirmPassword ? 'Passwords do not match' : ''
-    },
-    user () {
-      return this.$store.getters.user
-    }
-  },
-  watch: {
-    user (value) {
-      if (value !== null && value !== undefined) {
-        this.$router.push('/')
-      }
-    }
-  },
+  //  components: { Quizz },
   methods: {
-    async login () {
-      console.log('zss')
-      // connecter l'utilisateur
-      var self = this
-      axios.post('http://localhost:4000/api/login', {
-        login: self.name,
-        password: self.description
-      }).then(function (response) {
-        console.log(response)
-      }).catch(function (error) {
-        console.log(error)
-      })
-      const response = await axios.post(this.url + '/api/login', {
-        login: this.firstname,
-        password: this.email
-      })
-      console.log(response)
-      console.log('response is:', response)
-    },
-    logout () {
-    },
-    addElement () {
-      this.todos.push({
-        id: this.todos.length,
-        name: this.firstname,
-        email: this.email
-      })
-      console.log('ajouté !')
-    },
-    onSignup () {
-      this.$store.dispatch('signUserUp', { email: this.email, password: this.password, firstname: this.firstname, lastname: this.lastname })
-    }
+    //    redirect() {
+    //      this.$router.push("/quizz");
   }
+  // }
 }
 </script>

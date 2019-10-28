@@ -13,7 +13,7 @@ const app = express()
 var name = []
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:8080' // si votre port est différent, changez cette valeur !
+  origin: 'http://localhost:8080'
 }))
 
 app.use(session({
@@ -44,8 +44,8 @@ app.post('/api/login', (req, res) => {
   debugger
   var input = req.body
   var info = {
-    nom: input.login,
-    email: input.password
+    name: input.login,
+    password: input.password
   }
   name.push(info)
   res.json({ auth: 'Inscription reussi' })
