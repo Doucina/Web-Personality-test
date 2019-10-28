@@ -78,7 +78,7 @@
                 <v-layout row>
                   <v-flex xs12>
                     <v-btn @click="addElement">Ajouter</v-btn>
-                    <v-btn @click="login" type="submit">Submit</v-btn>
+                    <v-btn @click="addElement" type="submit">Submit</v-btn>
                     <v-btn type="submit" replace :to="{name: 'login'}">login</v-btn>
                     <v-tooltip bottom>
                    <template v-slot:activator="{ on }">
