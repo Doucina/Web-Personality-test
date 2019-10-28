@@ -10,6 +10,6 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     { path: "/", name: "QUIZZLAND", component: HelloWorld }
-    //{ path: "/quizz", component: Quizz },
+    //{ path: "/test", component: Test }
   ]
 });

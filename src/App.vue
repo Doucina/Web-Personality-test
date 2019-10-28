@@ -19,24 +19,30 @@
         <v-spacer></v-spacer>
 
         <v-btn outlined class="mr-3 white lighten-7 text-center" color="primary">Sign in</v-btn>
-        <v-btn outlined class="mr-2 white lighten-7 text-center" color="primary" replace :to="{name: 'register'}">Sign up</v-btn>
+        <v-btn outlined class="mr-2 white lighten-7 text-center" color="primary">Sign up</v-btn>
       </v-app-bar>
-
-      <v-content>
+ 
+      <v-content class="compo">
         <HelloWorld />
+        <Test />
         <Footer />
       </v-content>
-    </v-card>
+      </v-card>
+<v-content>
+      <router-view></router-view>
+</v-content>
   </v-app>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld";
+import Test from "./components/Test";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    HelloWorld,
+    Test
   },
   data: () => ({
     //
