@@ -3,7 +3,7 @@
     <v-card width="100%" class="blue lighten-4 text-center">
       <v-app-bar
         app
-        src="https://s1.1zoom.me/b5050/193/Winter_Lake_Forests_Snow_466263_1366x768.jpg"
+        src="http://www.maximumwall.com/wp-content/uploads/2015/07/fonds-ecran-paysage-magnifique-6.jpg"
       >
         <v-btn color="rgb(255, 0, 0, 0.16)" class="text-center lighten-2">
           <v-card-title class="section__title justify-center">

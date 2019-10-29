@@ -1,7 +1,8 @@
 <template>
   <v-container>
     <v-layout text-center wrap row justify-center align-center>
-      <v-img height="100%" width="150%" :src="require('../assets/no.jpg')">
+      <v-img height="100%" width="150%" 
+      src="http://www.maximumwall.com/wp-content/uploads/2015/07/fonds-ecran-paysage-magnifique-6.jpg">
         <v-layout row justify-center align-center>
           <v-container grid-list-xl pt-5 style="max-height: 10em;">
             <v-layout row justify-center align-center>
@@ -61,11 +62,11 @@
           <div id="surveyElement"></div>
           <div id="surveyResult"></div>
         </div>
-        <p class="text-center" style="color:#5f287d;">
+        <p class="text-center" style="color:#0f377d;">
           <br />For always more fun →
           <a
             href="https://www.openask.com/fr/tests/"
-            style="color:#5f287d;"
+            style="color:#0f377d;"
             target="_blank"
           >Click here 😊</a>
         </p>

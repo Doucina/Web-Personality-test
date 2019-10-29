@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="purple darken-4" padless>
+  <v-footer color="blue darken-2" padless>
     <v-row justify="center" no-gutters>
       <v-dialog justify="center" width="100" height="130">
        <template v-slot:activator="{ on }">
@@ -13,7 +13,7 @@
       
       </v-dialog>
 
-      <v-col class="purple darken-3 py-4 text-center white--text" cols="12">
+      <v-col class="blue darken-1 py-4 text-center white--text" cols="12">
         <strong medium>🍀 See you soon 🍀</strong>
         <p>Quizzland Team !</p>
       </v-col>
