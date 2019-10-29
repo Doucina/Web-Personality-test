@@ -23,31 +23,33 @@
       </v-app-bar>
  
       <v-content class="compo">
-        <HelloWorld />
-        <Test />
-        <Footer />
+        <Accueil v-on:triggerTest="beginTest" v-if="begin"/>
+        <Test v-if="!begin"/>
+        <Footer v-if="!begin"/>
       </v-content>
       </v-card>
-<v-content>
-      <router-view></router-view>
-</v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import Accueil from "./components/Accueil";
 import Test from "./components/Test";
-
+import Footer from "./components/Footer";
 export default {
   name: "App",
   components: {
-    HelloWorld,
-    Test
+    Accueil,
+    Test,
+    Footer
   },
   data: () => ({
-    //
-  })
-
+    begin:true
+  }),
+  methods: {
+    beginTest(){
+      this.begin=false;
+    }
+  }
   
 };
 </script>

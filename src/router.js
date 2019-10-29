@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import HelloWorld from "./components/HelloWorld";
+import Accueil from "./components/Accueil";
 
 Vue.use(Router);
 
@@ -8,8 +8,5 @@ Vue.use(Router);
 export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
-  routes: [
-    { path: "/", name: "QUIZZLAND", component: HelloWorld }
-    //{ path: "/test", component: Test }
-  ]
+  routes: [{ path: "/", name: "QUIZZLAND", component: Accueil }]
 });
