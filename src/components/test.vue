@@ -27,6 +27,8 @@
                     </v-text-field>
                   </v-flex>
                 </v-container>
+                <v-subheader class="subheading" v-if="todos.length == 0">You have 0 Tasks, add some</v-subheader>
+                <v-subheader class="subheading" v-else-if="todos.length == 1">Your Tasks</v-subheader>
                 <div v-for="(todo, i) in todos" v-bind:key="todo.id">
                   <v-list-tile avatar>
                     <v-list-tile-action>

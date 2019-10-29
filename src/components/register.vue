@@ -101,21 +101,20 @@
       <div>
       <v-card class="mx-auto" max-width="400" tile>
         <v-list-item v-for="(item, index) in todos" v-bind:key="item.id">
+          <v-list-tile-action>
+              <v-checkbox v-model="item.done"></v-checkbox>
+          </v-list-tile-action>
           <v-list-item-content>
-            <v-list-item-title>
-              {{ item.firstname }}
+            <v-list-item-title v-if="todos.length == 0" style="display:none">
             </v-list-item-title>
-            <v-list-item-title>
-              {{ item.email }}
+            <v-list-item-title v-else>
+              <span> email : </span>{{ item.email }}
+              <span> password : </span> {{ item.password }}
             </v-list-item-title>
-            <v-list-item-subtitle>
-              {{ item.password }}
-            </v-list-item-subtitle>
-            <button @click="rmElement(index)">Remove</button>
+            <v-btn icon ripple color="red" @click="rmElement(index)">
+                      <v-icon class="white--text" >close</v-icon>
+            </v-btn>
           </v-list-item-content>
-        </v-list-item>
-        <v-list-item v-if="todos.length == 0">
-            rmElement(index)
         </v-list-item>
       </v-card>
       </div>
