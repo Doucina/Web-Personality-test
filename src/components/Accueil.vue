@@ -61,11 +61,11 @@
           <div id="surveyElement"></div>
           <div id="surveyResult"></div>
         </div>
-        <p class="text-center" style="color:#caccd9;">
+        <p class="text-center" style="color:#5f287d;">
           <br />For always more fun →
           <a
             href="https://www.openask.com/fr/tests/"
-            style="color:#caccd9;"
+            style="color:#5f287d;"
             target="_blank"
           >Click here 😊</a>
         </p>

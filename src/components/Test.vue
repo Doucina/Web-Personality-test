@@ -113,7 +113,7 @@ export default {
         ]
       ],
       [
-        ["Which quote defines you best ?"],[
+        ["What is your element ?"],[
           ["Eau","https://10wallpaper.com/wallpaper/medium/1701/Scotland_Highlands_River-Winter_Landscape_HD_Wallpaper_medium.jpg",1],
           ["Terre","https://cdn.futura-sciences.com/buildsv6/images/wide1920/8/a/3/8a3ab16898_106964_source-eau-potable.jpg",2],
           ["Mer","https://i.pinimg.com/originals/61/0b/87/610b874b87156d674a5b4c116f929693.jpg",3],
