@@ -3,9 +3,9 @@
     dark
     src="https://eaglesmere.org/wp-content/uploads/2019/07/hire-freelance-designers-1900x950.jpg"
   >
-  <v-container >
+  <v-container my-5>
     <v-layout row >
-      <v-flex xs12 sm6 offset-sm3>
+      <v-flex xs12 sm6 md6 ma-1 offset-sm3>
          <v-hover
           v-slot:default="{ hover }"
           :open-delay="openDelay"
@@ -15,7 +15,6 @@
         >
         <v-card
         :elevation="hover ? 12 : 2"
-            class="mx-auto"
           >
           <v-card-text>
             <v-container>
@@ -24,7 +23,8 @@
                  <v-layout row>
                   <v-flex xs12>
                     <v-text-field
-                      v-model="firstname"
+                      name="firstname"
+                      id="firstname"
                       :rules="nameRules"
                       :counter="20"
                       label="First name"
@@ -56,12 +56,16 @@
                 <v-layout row>
                   <v-flex xs12>
                     <v-text-field
-                      name="password"
-                      label="Password"
-                      id="password"
-                      v-model="password"
-                      type="password"
-                      required></v-text-field>
+            v-model="password"
+            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+            :rules="[passwordRules.required, passwordRules.min]"
+            :type="show1 ? 'text' : 'password'"
+            name="password"
+            label="Password"
+            hint="At least 8 characters"
+            counter
+            @click:append="show1 = !show1"
+          ></v-text-field>
                   </v-flex>
                 </v-layout>
                 <v-layout row>
@@ -77,7 +81,6 @@
                 </v-layout>
                 <v-layout row>
                   <v-flex xs12>
-                    <v-btn @click="addElement">Ajouter</v-btn>
                     <v-btn @click="addElement" type="submit">Submit</v-btn>
                     <v-btn type="submit" replace :to="{name: 'login'}">login</v-btn>
                     <v-tooltip bottom>
@@ -92,8 +95,30 @@
             </v-container>
           </v-card-text>
         </v-card>
-         </v-hover>
+    </v-hover>
       </v-flex>
+      <v-spacer></v-spacer>
+      <div>
+      <v-card class="mx-auto" max-width="400" tile>
+        <v-list-item v-for="(item, index) in todos" v-bind:key="item.id">
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ item.firstname }}
+            </v-list-item-title>
+            <v-list-item-title>
+              {{ item.email }}
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              {{ item.password }}
+            </v-list-item-subtitle>
+            <button @click="rmElement(index)">Remove</button>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item v-if="todos.length == 0">
+            rmElement(index)
+        </v-list-item>
+      </v-card>
+      </div>
     </v-layout>
   </v-container>
  </v-parallax>
@@ -104,14 +129,20 @@ import axios from 'axios'
 export default {
   data: () => ({
     valid: false,
+    show1: false,
     firstname: '',
     lastname: '',
     password: '',
     confirmPassword: '',
     nameRules: [
       v => !!v || 'Name is required',
-      v => v.length <= 10 || 'Name must be less than 10 characters'
+      v => v.length >= 2 || 'Min 8 characters'
     ],
+    passwordRules: {
+      required: value => !!value || 'Required.',
+      min: v => v.length >= 8 || 'Min 8 characters',
+      emailMatch: () => ('The email and password you entered don\'t match')
+    },
     email: '',
     emailRules: [
       v => !!v || 'E-mail is required',
@@ -126,6 +157,11 @@ export default {
     },
     user () {
       return this.$store.getters.user
+    },
+    nonNullItems: function () {
+      return this.todos.filter(function (item) {
+        return item !== null
+      })
     }
   },
   watch: {
@@ -160,10 +196,14 @@ export default {
     addElement () {
       this.todos.push({
         id: this.todos.length,
-        name: this.firstname,
-        email: this.email
+        email: this.email,
+        password: this.password
       })
       console.log('ajouté !')
+    },
+    rmElement (index) {
+      console.log('index', index)
+      this.todos.splice(index, 1)
     },
     onSignup () {
       this.$store.dispatch('signUserUp', { email: this.email, password: this.password, firstname: this.firstname, lastname: this.lastname })

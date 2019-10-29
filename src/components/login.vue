@@ -30,6 +30,7 @@
                       :rules="emailRules"
                       v-model="email"
                       type="email"
+                      prepend-icon="mdi-account-circle"
                       required></v-text-field>
                   </v-flex>
                 </v-layout>
@@ -41,6 +42,8 @@
                       id="password"
                       v-model="password"
                       type="password"
+                      prepend-icon="mdi-lock"
+                      append-icon="mdi-eye-off"
                       required></v-text-field>
                   </v-flex>
                 </v-layout>
@@ -55,6 +58,22 @@
                     <span>Revenir sur la page d'acceuil</span>
                   </v-tooltip>
                   </v-flex>
+                  <v-card class="mx-auto" max-width="400" tile>
+        <v-list-item v-for="(item, index) in todos" v-bind:key="item.id">
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ item.firstname }}
+            </v-list-item-title>
+            <v-list-item-title>
+              {{ item.password }}
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              {{ item.email }}
+              <v-btn @click="rmElement(index)">Remove</v-btn>
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </v-card>
                 </v-layout>
               </form>
             </v-container>
@@ -129,9 +148,14 @@ export default {
       this.todos.push({
         id: this.todos.length,
         name: this.firstname,
-        email: this.email
+        email: this.email,
+        password: this.password
       })
       console.log('ajouté !')
+    },
+    rmElement (index) {
+      console.log('index', index)
+      this.todos.splice(index, 1)
     },
     onSignup () {
       this.$store.dispatch('signUserUp', { email: this.email, password: this.password, firstname: this.firstname, lastname: this.lastname })
