@@ -1,3 +1,4 @@
+
 <template>
  <v-parallax
     dark
@@ -83,6 +84,7 @@
                   <v-flex xs12>
                     <v-btn @click="addElement" type="submit">Submit</v-btn>
                     <v-btn type="submit" replace :to="{name: 'login'}">login</v-btn>
+                    <v-btn @click='register'>Register</v-btn>
                     <v-tooltip bottom>
                    <template v-slot:activator="{ on }">
                      <v-btn primary light color="red white--text" dark v-on="on" replace :to="{name: 'home'}">Home</v-btn>
@@ -171,8 +173,7 @@ export default {
     }
   },
   methods: {
-    async login () {
-      console.log('zss')
+    async register () {
       // connecter l'utilisateur
       var self = this
       axios.post('http://localhost:4000/api/login', {
@@ -183,14 +184,12 @@ export default {
       }).catch(function (error) {
         console.log(error)
       })
-      const response = await axios.post(this.url + '/api/login', {
+      const response = await axios.post(this.url + '/api/register', {
         login: this.firstname,
         password: this.password
       })
       console.log(response)
       console.log('response is:', response)
-    },
-    logout () {
     },
     addElement () {
       this.todos.push({

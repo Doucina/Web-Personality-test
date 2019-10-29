@@ -10,14 +10,17 @@ const cors = require('cors')
 const session = require('express-session')
 
 const app = express()
-var name = []
+var user = [{
+  email: 'admin',
+  password: 'changethispassword'
+}]
 app.use(cors({
   credentials: true,
   origin: 'http://localhost:8080'
 }))
 
 app.use(session({
-  name: 'sid',
+  user: 'sid',
   secret: 'ssh!quiet,it\'asecret!', // changez cette valeur
   resave: false,
   saveUninitialized: true,
@@ -36,21 +39,26 @@ app.get('/api/test', (req, res) => {
 
 app.get('/', function (req, res, next) {
   res.json({ status: 'open' })
-  res.end('Maintenant, il me faut récupérer les sources de données de notre test de personnalité')
 })
 
 app.post('/api/login', (req, res) => {
   console.log('ok')
-  debugger
   var input = req.body
   var info = {
-    name: input.login,
-    password: input.password
+    email: input.email,
+    password: input.password }
+  user.push(info)
+  const element = user.find(info => info.email === input.email)
+  if (element === undefined) {
+    res.json({ message: 'Il n existe aucun compte associé à cette E-mail', connect: 'false' })
+  } else if (element.password === input.password) {
+    res.cookie('name', 'Moran', { maxAge: 24 * 60 * 60 * 1000 }).send('cookie set')
+    res.json({ message: 'connexion réussi', connect: 'true' })
+  } else {
+    res.json({ message: 'Mot de passe incorect', connect: 'false' })
   }
-  name.push(info)
-  res.json({ auth: 'Inscription reussi' })
-  console.log(name)
 })
+
 app.get('/api/admin', (req, res) => {
   if (!req.session.userId || req.session.isAdmin === false) {
     res.status(401)

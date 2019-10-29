@@ -11,7 +11,6 @@ export default new Router({
   routes: [
     { path: '/', name: 'home', component: HelloWorld },
     { path: '/login', name: 'login', component: () => import('./components/login.vue'), props: true },
-    { path: '/test', name: 'test', component: () => import('./components/test.vue'), props: true },
     { path: '/register', name: 'register', component: () => import('./components/register.vue'), props: true }
   ]
 })

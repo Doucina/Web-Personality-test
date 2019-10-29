@@ -50,6 +50,7 @@
                 <v-layout row>
                   <v-flex xs12>
                     <v-btn @click="addElement">Save</v-btn>
+                    <v-btn success @click='login'>Connexion</v-btn>
                     <v-btn @click="login" type="submit" >Valid</v-btn>
                     <v-tooltip bottom>
                    <template v-slot:activator="{ on }">
@@ -128,10 +129,11 @@ export default {
       // connecter l'utilisateur
       var self = this
       axios.post('http://localhost:4000/api/login', {
-        login: self.name,
-        password: self.description
+        login: self.login,
+        password: self.password
       }).then(function (response) {
-        console.log(response)
+        console.log('ok')
+        console.log(this.login)
       }).catch(function (error) {
         console.log(error)
       })
