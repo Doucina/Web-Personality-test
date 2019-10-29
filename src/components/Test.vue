@@ -109,19 +109,19 @@ export default {
       } else {
         this.overlay = true;
         if (this.count < (this.currentQuestion * this.questionSet.length) / 4) {
-          this.result = this.answerSet[0];
+          this.result = this.answerSet[3];
         } else if (
           this.count >= (this.currentQuestion * this.questionSet.length) / 4 &&
           this.count < (this.currentQuestion * this.questionSet.length) / 2
         ) {
-          this.result = this.answerSet[1];
+          this.result = this.answerSet[0];
         } else if (
           this.count >= (this.currentQuestion * this.questionSet.length) / 2 &&
           this.count < (this.currentQuestion * 3 * this.questionSet.length) / 4
         ) {
-          this.result = this.answerSet[2];
+          this.result = this.answerSet[1];
         } else {
-          this.result = this.answerSet[3];
+          this.result = this.answerSet[2];
         }
       }
     },
