@@ -11,7 +11,7 @@
                     <v-flex mb-4>
                       <h1 style="color:#caccd9;" class="display-2 font-weight-bold mb-3">Welcome to Quizzland</h1>
                       <p style="color:#caccd9;" class="subheading font-weight-light">
-                        Want to have fun with a multitude of tests concocted by our team ?
+                        Did you ever wonder what season your soul was linked to ?
                         <br />Let's join us !
                       </p>
                     </v-flex>

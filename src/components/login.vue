@@ -88,6 +88,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import axios from 'axios'
 export default {
   data: () => ({

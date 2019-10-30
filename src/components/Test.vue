@@ -1,45 +1,76 @@
 <template>
-  <v-container>
-    <v-row justify="center">
-      <h1>{{ currentAnswers[0][0] }}</h1>
-    </v-row>
-    <v-row>
-      <v-col v-for="(item, index) in currentAnswers[1]" v-bind:key="index">
-        <Answers
-          v-on:getAnswerFromObject="getAnswer"
-          :id="item[2]"
-          :imgUrl="item[1]"
-          :titre="item[0]"
-        />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
-        <v-btn @click="reset" color="error">RESET</v-btn>
-      </v-col>
-    </v-row>
-    <v-row justify="center">
-      <v-progress-linear
-        active="active"
-        rounded="rounded"
-        height="10"
-        buffer:100
-        :value="100 * currentQuestion / questionSet.length"
-        color="light-blue"
-      />
-      <p>{{ currentQuestion }} / {{ questionSet.length }}</p>
-    </v-row>
-
-    <v-container>
-      <v-overlay :opacity="0.5" :value="overlay">
-        <v-card class="mx-auto">
-          <v-card-title justify="center">{{ result[0] }}</v-card-title>
-          <v-card-subtitle>{{ result[1] }}</v-card-subtitle>
-          <v-btn @click="reset" color="error">RETAKE THE TEST</v-btn>
-        </v-card>
-      </v-overlay>
+  <v-flex xs12 sm12>
+    <v-container width ="500px">
+        <v-card style="border-radius:20px">
+        <v-row justify="center">
+          <h1>{{ currentAnswers[0][0] }}</h1>
+        </v-row>
+        <v-row>
+          <v-col>
+            <Answers
+              v-on:getAnswerFromObject="getAnswer"
+              :id="currentAnswers[1][0][2]"
+              :imgUrl="currentAnswers[1][0][1]"
+              :titre="currentAnswers[1][0][0]"
+            />
+          </v-col>
+          <v-col>
+            <Answers
+              v-on:getAnswerFromObject="getAnswer"
+              :id="currentAnswers[1][1][2]"
+              :imgUrl="currentAnswers[1][1][1]"
+              :titre="currentAnswers[1][1][0]"
+            />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <Answers
+              v-on:getAnswerFromObject="getAnswer"
+              :id="currentAnswers[1][2][2]"
+              :imgUrl="currentAnswers[1][2][1]"
+              :titre="currentAnswers[1][2][0]"
+            />
+          </v-col>
+          <v-col>
+            <Answers
+              v-on:getAnswerFromObject="getAnswer"
+              :id="currentAnswers[1][3][2]"
+              :imgUrl="currentAnswers[1][3][1]"
+              :titre="currentAnswers[1][3][0]"
+            />
+          </v-col>
+        </v-row>
+        <v-row justify="center">
+          <v-btn @click="reset" color="error">RESET</v-btn>
+        </v-row>
+        <br/>
+        <v-container>
+          <v-row justify="center">
+            <v-progress-linear
+              active="active"
+              rounded="rounded"
+              height="10"
+              buffer:100
+              :value="100 * currentQuestion / questionSet.length"
+              color="light-blue"
+              width="80%"
+            />
+            <p>{{ currentQuestion }} / {{ questionSet.length }}</p>
+          </v-row>
+        </v-container>
+      </v-card>
+      <v-container>
+        <v-overlay :opacity="0.5" :value="overlay">
+          <v-card class="mx-auto" justify="center">
+            <v-card-title justify="center">{{ result[0] }}</v-card-title>
+            <v-card-subtitle>{{ result[1] }}</v-card-subtitle>
+            <v-btn @click="reset" color="error">RETAKE THE TEST</v-btn>
+          </v-card>
+        </v-overlay>
+      </v-container>
     </v-container>
-  </v-container>
+  </v-flex>
 </template>
 
 <script>
@@ -127,7 +158,7 @@ export default {
       ["Winter", "You are a little cold and reserved. If someone dislikes you, you can be scathing, but when you like a person, you give yourself 100%"],
       ["Autumn", "The colors, the falling leaves, the sweet and fragrant flavors ... All this puts you in a melancholic, romantic and dreamy mood."],
       ["Summer", "Dynamic and playful, you are passionate. you are fiery and ardent. And we appreciate you because you are sensitive !"],
-      ["Spring", "You dream of a world full of sweetness, small birds and flowers. To be happy, you need harmony.With you, it's the sweetness of life!"]
+      ["Spring", "You dream of a world full of sweetness, small birds and flowers. To be happy, you need harmony. With you, it's the sweetness of life!"]
     ]
   }),
   mounted() {},
@@ -138,19 +169,18 @@ export default {
         this.currentAnswers = this.questionSet[this.currentQuestion];
         this.currentAnswers[1] = this.shuffle(this.currentAnswers[1]);
         this.count += id;
-        alert(this.count);
       } else {
         this.overlay = true;
         if (this.count < (this.currentQuestion * this.questionSet.length) / 4) {
           this.result = this.answerSet[3];
         } else if (
-          this.count >= (this.currentQuestion * this.questionSet.length) / 4 &&
-          this.count < (this.currentQuestion * this.questionSet.length) / 2
+          this.count > (this.currentQuestion * this.questionSet.length) / 4 &&
+          this.count <= (this.currentQuestion * this.questionSet.length) / 2
         ) {
           this.result = this.answerSet[0];
         } else if (
-          this.count >= (this.currentQuestion * this.questionSet.length) / 2 &&
-          this.count < (this.currentQuestion * 3 * this.questionSet.length) / 4
+          this.count > (this.currentQuestion * this.questionSet.length) / 2 &&
+          this.count <= (this.currentQuestion * 3 * this.questionSet.length) / 4
         ) {
           this.result = this.answerSet[1];
         } else {

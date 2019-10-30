@@ -14,7 +14,7 @@
                       class="display-2 font-weight-bold mb-3"
                     >Welcome to Quizzland</h1>
                     <p style="color:#caccd9;" class="subheading font-weight-light">
-                      Want to have fun with a multitude of tests concocted by our team ?
+                      Wanna see what season fits you best ?
                       <br />Let's join us !
                     </p>
                   </v-flex>
