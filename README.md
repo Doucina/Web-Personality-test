@@ -1,4 +1,4 @@
-# first-app
+# QUIZZLAND Personality Test
 
 ## Project setup
 ```
