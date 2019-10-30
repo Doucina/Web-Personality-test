@@ -18,8 +18,9 @@
 
         <v-spacer></v-spacer>
 
-        <v-btn outlined class="mr-3 white lighten-7 text-center" color="primary">Sign in</v-btn>
-        <v-btn outlined class="mr-2 white lighten-7 text-center" color="primary">Sign up</v-btn>
+        <v-btn outlined class="mr-3 white lighten-7 text-center" color="primary" replace :to="{name: 'login'}">Sign in</v-btn>
+        <v-btn outlined class="mr-2 white lighten-7 text-center" color="primary" replace :to="{name: 'register'}">Sign up</v-btn>
+        <v-btn outlined class="mr-2 white lighten-7 text-center" color="primary" replace :to="{name: 'test'}">test</v-btn>
       </v-app-bar>
  
       <v-content class="compo">
