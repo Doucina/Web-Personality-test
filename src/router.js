@@ -1,6 +1,5 @@
 import Router from "vue-router";
 import Vue from "vue";
-import Accueil from "./components/Accueil";
 
 Vue.use(Router);
 
@@ -9,7 +8,11 @@ export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
-    { path: "/", name: "home", component: Accueil },
+    {
+      path: "/",
+      name: "home",
+      component: () => import("./components/Accueil.vue")
+    },
     {
       path: "/login",
       name: "login",
@@ -20,6 +23,12 @@ export default new Router({
       path: "/register",
       name: "register",
       component: () => import("./components/register.vue"),
+      props: true
+    },
+    {
+      path: "/quizz",
+      name: "Test",
+      component: () => import("./components/Test.vue"),
       props: true
     }
   ]

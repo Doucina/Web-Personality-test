@@ -52,6 +52,7 @@
                   outlined
                   color="primary"
                   @click="redirect"
+                  replace :to="{name: 'Test'}"
                 >Faire le test</v-btn>
               </v-hover>
             </v-card-actions>
